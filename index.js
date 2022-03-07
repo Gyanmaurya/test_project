@@ -2,22 +2,22 @@
  const app=express();
  const port=4000;
 
-  app.use(logger);
- app.get("/books",(req,res)=>{
+  
+ app.get("/books",logger,(req,res)=>{
      
-   return res.send( { route: "/books",permission: false, login:""});
+   return res.send( { route: "/books", login:"Books Portal"});
  })
 
 
- app.get("/libraries",checkPermission,(req,res)=>{
+ app.get("/libraries",checkPermission,logger,(req,res)=>{
      
-   return res.send({ route: "/libraries", permission: true,login:"login librarian"});
+   return res.send({ route: "/libraries", permission: true,login:"librarian"});
  })
 
 
- app.get("/authors",checkPermission,(req,res)=>{
+ app.get("/authors",checkPermission,logger,(req,res)=>{
      
-   return res.send({ route: "/authors", permission: true,login :"login author"});
+   return res.send({ route: "/authors", permission: true,login :"author"});
 
  })
 
